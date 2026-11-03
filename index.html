@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio</title>
+  <meta name="description" content="Portfolio" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header class="menubar">
+    <div class="menubar-left">
+      <span class="menubar-dot" aria-hidden="true"></span>
+      <strong id="mbName"></strong>
+      <button class="menubar-link" data-open="about">About</button>
+      <button class="menubar-link" data-open="finder">Projects</button>
+      <button class="menubar-link" data-open="notes">Contact</button>
+    </div>
+    <time class="menubar-clock" id="clock"></time>
+  </header>
+
+  <main class="desktop" id="desktop">
+    <div class="hero-bg" id="heroBg" aria-hidden="true"></div>
+    <div class="hero-text" id="heroText">
+      <h1 id="heroName"></h1>
+      <p id="heroRole"></p>
+    </div>
+    <div class="icons" id="icons" aria-label="Projects"></div>
+    <div id="windows"></div>
+  </main>
+
+  <nav class="dock" id="dock" aria-label="Dock"></nav>
+
+  <script src="data.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
