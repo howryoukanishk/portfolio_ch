@@ -107,7 +107,11 @@
         <h4 class="section-title">Skills</h4>
         <div class="chips">${SITE.skills.map(s => `<span>${esc(s)}</span>`).join("")}</div>
         <h4 class="section-title">Experience</h4>
-        <ul class="timeline">${SITE.experience.map(x => `<li><span>${esc(x.when)}</span><span>${esc(x.what)}</span></li>`).join("")}</ul>`,
+        <ul class="timeline">${SITE.experience.map(x => `<li><span>${esc(x.when)}</span><span>${esc(x.what)}</span></li>`).join("")}</ul>
+        ${SITE.education ? `<h4 class="section-title">Education & Certifications</h4>
+        <ul class="timeline">${SITE.education.map(x => `<li><span>${esc(x.when)}</span><span>${esc(x.what)}</span></li>`).join("")}</ul>` : ""}
+        ${SITE.languages ? `<h4 class="section-title">Languages</h4><p class="desc" style="margin-top:0">${esc(SITE.languages)}</p>` : ""}
+        ${SITE.resume ? `<p style="margin-top:28px"><a class="btn btn-primary" href="${esc(SITE.resume)}" download>Download resume</a></p>` : ""}`,
     }),
     finder: () => ({
       title: "Projects",
@@ -136,16 +140,32 @@
 
   const projectView = i => {
     const p = PROJECTS[i];
-    const meta = [["Year", p.year], ["Project type", p.type], ["Stack / Credits", p.stack]]
+    if (p.pdf) return {
+      title: p.title + ".pdf",
+      cls: "pdf-win",
+      html: `
+        <div class="pdf-head">
+          <div><h2>${esc(p.title)}</h2><p class="desc">${esc(p.description)}</p></div>
+          <div class="pdf-actions">
+            <a class="btn" href="${esc(p.pdf)}" target="_blank" rel="noopener">Open ↗</a>
+            <a class="btn btn-primary" href="${esc(p.pdf)}" download>Download PDF</a>
+          </div>
+        </div>
+        <iframe class="pdf-frame" src="${esc(p.pdf)}#view=FitH" title="${esc(p.title)} PDF"></iframe>`,
+    };
+    const meta = [["Year", p.year], ["Project type", p.type], ["Tools", p.stack]]
       .filter(([, v]) => v)
       .map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join("");
     const link = p.link ? `<div><dt>Link</dt><dd><a href="${esc(p.link)}" target="_blank" rel="noopener">Visit ↗</a></dd></div>` : "";
+    const stats = p.stats ? `<div class="stats">${p.stats.map(s => `<div><strong>${esc(s.value)}</strong><span>${esc(s.label)}</span></div>`).join("")}</div>` : "";
+    const points = p.points ? `<ul class="points">${p.points.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : "";
     return {
       title: p.title,
       html: `
         <h2>${esc(p.title)}</h2>
         <p class="desc">${esc(p.description)}</p>
         <dl class="meta">${meta}${link}</dl>
+        ${stats}${points}
         ${(p.images || []).map(img => `<div class="shot" style="background:${esc(bg(img))}" role="img" aria-label="${esc(p.title)} image"></div>`).join("")}`,
     };
   };
@@ -240,7 +260,13 @@
     closeWindow(top[0]);
   });
 
-  document.querySelectorAll("[data-open]").forEach(b => b.onclick = () => openWindow(b.dataset.open, b));
+  document.querySelectorAll("[data-open]").forEach(b => b.onclick = () => {
+    const v = b.dataset.open;
+    if (v === "resume") {
+      const i = PROJECTS.findIndex(p => p.pdf);
+      if (i > -1) openWindow("project:" + i, PROJECTS[i]._el);
+    } else openWindow(v, b);
+  });
 
   /* ---------- Dock ---------- */
   const ICONS = {

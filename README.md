@@ -5,6 +5,7 @@ A macOS-desktop style portfolio: projects are folders on the desktop, clicking o
 ## Edit your content
 Everything personal lives in **`data.js`**: name, role, bio, skills, experience, social links and projects.
 
+- **Resume:** the PDF is `assets/Chhavi_Kant_Resume.pdf`. Replace that file to update it. It opens from the Resume folder.
 - **Hero photo:** drop an image in `assets/` and set `heroImage: "assets/hero.jpg"`. It's shown full-screen in grayscale. Leave it `""` to show your name in large type instead.
 - **Project images:** set `thumb` and `images` to paths like `"assets/project1.jpg"`. CSS gradients also work as placeholders.
 - **Folder positions:** `x` / `y` are percentages of the screen. Visitors can also drag folders around.
