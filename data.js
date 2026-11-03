@@ -41,7 +41,7 @@ const SITE = {
 
   // Dock links. icon: github | linkedin | x | instagram | behance | dribbble | mail
   socials: [
-    { label: "LinkedIn", icon: "linkedin", url: "https://www.linkedin.com/in/chhavikantdigitalmarketing" },
+    { label: "LinkedIn", icon: "linkedin", url: "https://www.linkedin.com/in/chhavikant-digitalmarketing" },
     { label: "Email",    icon: "mail",     url: "mailto:chhavikant.edu@gmail.com" },
   ],
 };
@@ -228,20 +228,6 @@ const PROJECTS = [
       "Wrote an organic growth plan covering posts, reels and stories.",
     ],
     thumb: "radial-gradient(circle at 30% 110%,#fdf497 0%,#fd5949 45%,#d6249f 60%,#285aeb 90%)",
-    x: 64, y: 68,
-  },
-  {
-    title: "E-Commerce & Ops",
-    year: "2019 — 2026",
-    type: "Previous Experience",
-    stack: "MS Excel · E-commerce",
-    description: "Earlier roles in Ghaziabad that built a base in data, e-commerce and numbers — useful for budget control and lead-to-sale tracking today.",
-    points: [
-      "E-Commerce Executive — Divya Crystal World (in-house e-commerce).",
-      "Administrative & Data Management Executive — Bhavishya International School.",
-      "Accounts Executive — Pyramid Tatva & Crystal Destination.",
-    ],
-    thumb: "linear-gradient(135deg,#3fa45b,#0f3d1d)",
-    x: 83, y: 68,
+    x: 74, y: 66,
   },
 ];
