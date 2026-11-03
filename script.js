@@ -20,7 +20,7 @@
     const hb = $("#heroBg");
     hb.classList.add("has-image");
     hb.style.backgroundImage = `url("${SITE.heroImage}")`;
-    $("#heroText").classList.add("hidden");
+    document.body.classList.add("has-photo");
   }
 
   const clock = $("#clock");

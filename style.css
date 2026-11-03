@@ -71,6 +71,26 @@ a { color: inherit; }
 }
 .hero-text.hidden { display: none; }
 
+/* ---------- Photo hero ---------- */
+body.has-photo { background: #0b0b0b; }
+.has-photo .hero-bg { background-color: #0b0b0b; background-position: 30% 20%; }
+.has-photo .hero-bg::before { /* fade edges into black, keeps labels readable */
+  content: ""; position: absolute; inset: 0; pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.35) 0%, transparent 25%, transparent 55%, rgba(0,0,0,.55) 100%),
+    linear-gradient(180deg, transparent 60%, rgba(0,0,0,.6) 100%);
+}
+.has-photo .hero-text { left: auto; right: 5vw; top: 50%; transform: translateY(-50%); width: auto; text-align: left; }
+.has-photo .hero-text h1 {
+  font-size: clamp(48px, 7vw, 130px); color: #f4f4f4; letter-spacing: -0.055em; line-height: .9;
+  text-shadow: none; max-width: 6ch;
+}
+.has-photo .hero-text p { color: rgba(255,255,255,.6); letter-spacing: .28em; margin-top: 22px; }
+.has-photo .menubar { background: rgba(0,0,0,.35); color: #f2f2f2; border-bottom-color: rgba(255,255,255,.08); }
+.has-photo .menubar-dot { background: #f2f2f2; }
+.has-photo .dock { background: rgba(255,255,255,.14); border-color: rgba(255,255,255,.18); }
+.has-photo .dock-sep { background: rgba(255,255,255,.2); }
+
 /* ---------- Folder icons ---------- */
 .icons { position: absolute; inset: 30px 0 0 0; }
 .icon {
@@ -281,6 +301,15 @@ a { color: inherit; }
   .dock-item { width: 44px; height: 44px; border-radius: 12px; }
   .dock-item svg { width: 22px; height: 22px; }
   .dock-item:hover, .dock-item:hover + .dock-item, .dock-item:has(+ .dock-item:hover) { transform: none; }
+}
+
+@media (max-width: 720px) {
+  .has-photo .hero-bg { bottom: 42%; background-position: 32% 30%; }
+  .has-photo .hero-bg::before { background: linear-gradient(180deg, transparent 55%, #0b0b0b 100%); }
+  .has-photo .hero-text { left: 16px; right: 16px; top: 44%; transform: none; }
+  .has-photo .hero-text h1 { font-size: 52px; max-width: none; }
+  .has-photo .hero-text p { margin-top: 10px; font-size: 12px; }
+  .has-photo .icons { top: 60%; }
 }
 
 @media (prefers-reduced-motion: reduce) {

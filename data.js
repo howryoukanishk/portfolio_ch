@@ -11,7 +11,7 @@ const SITE = {
 
   // Put a photo in /assets (e.g. assets/hero.jpg) and set the path.
   // Shown full-screen in grayscale. Leave "" to show the name instead.
-  heroImage: "",
+  heroImage: "assets/hero.webp",
 
   // Optional avatar for the dock's "About" icon (e.g. "assets/me.jpg").
   avatar: "",
@@ -61,7 +61,7 @@ const PROJECTS = [
     pdf: "assets/Chhavi_Kant_Resume.pdf",
     description: "My full resume — experience, skills, tools, projects and education.",
     thumb: "repeating-linear-gradient(180deg,#fff 0 7px,#dcdcdc 7px 8px)",
-    x: 12, y: 14,
+    x: 4, y: 12,
   },
   {
     title: "The Dwell Construction",
@@ -80,7 +80,7 @@ const PROJECTS = [
       "Designed the brand's landing page plus ad and social creatives (brochures, posts) in Canva.",
     ],
     thumb: "linear-gradient(135deg,#ff6a2b,#d63a12)",
-    x: 68, y: 10,
+    x: 64, y: 10,
   },
   {
     title: "JSN Renewable Energy",
@@ -94,7 +94,7 @@ const PROJECTS = [
       "Social media: manage the content calendar, posts, reels and stories on Instagram, Facebook and LinkedIn.",
     ],
     thumb: "linear-gradient(135deg,#ffd23f,#f08a00)",
-    x: 84, y: 19,
+    x: 83, y: 14,
   },
   {
     title: "Google Ads & SEO",
@@ -107,7 +107,7 @@ const PROJECTS = [
       "On-page SEO, keyword research and mapping, and competitor analysis.",
     ],
     thumb: "linear-gradient(135deg,#4e8cff,#1b3fa6)",
-    x: 14, y: 60,
+    x: 4, y: 62,
   },
   {
     title: "Dance Academy Instagram",
@@ -120,7 +120,7 @@ const PROJECTS = [
       "Wrote an organic growth plan covering posts, reels and stories.",
     ],
     thumb: "radial-gradient(circle at 30% 110%,#fdf497 0%,#fd5949 45%,#d6249f 60%,#285aeb 90%)",
-    x: 42, y: 66,
+    x: 64, y: 68,
   },
   {
     title: "E-Commerce & Ops",
@@ -134,6 +134,6 @@ const PROJECTS = [
       "Accounts Executive — Pyramid Tatva & Crystal Destination.",
     ],
     thumb: "linear-gradient(135deg,#3fa45b,#0f3d1d)",
-    x: 74, y: 60,
+    x: 83, y: 68,
   },
 ];
