@@ -138,6 +138,26 @@
     }),
   };
 
+  // Case-study section: any of h, p (string or array), kv, cards, table, list, note, quote
+  const renderSection = s => {
+    if (s.quote) return `<blockquote class="cs-quote">${esc(s.quote)}</blockquote>`;
+    const ps = [].concat(s.p || []).map(t => `<p class="cs-p">${esc(t)}</p>`).join("");
+    const kv = s.kv ? `<dl class="cs-kv">${s.kv.map(([k, v]) => `<div><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("")}</dl>` : "";
+    const cards = s.cards ? `<div class="cs-cards">${s.cards.map(c => `
+      <div class="cs-card">
+        <div class="cs-card-top"><strong>${esc(c.title)}</strong><span>${esc(c.tag || "")}</span></div>
+        ${c.text ? `<p>${esc(c.text)}</p>` : ""}
+        ${c.list ? `<div class="cs-ads">${c.list.map(x => `<span>${esc(x)}</span>`).join("")}</div>` : ""}
+      </div>`).join("")}</div>` : "";
+    const table = s.table ? `<div class="cs-table"><table>
+      <thead><tr>${s.table.head.map(h => `<th>${esc(h)}</th>`).join("")}</tr></thead>
+      <tbody>${s.table.rows.map(r => `<tr>${r.map(c => `<td>${esc(c)}</td>`).join("")}</tr>`).join("")}</tbody>
+    </table></div>` : "";
+    const list = s.list ? `<ul class="points">${s.list.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : "";
+    const note = s.note ? `<p class="cs-note">${esc(s.note)}</p>` : "";
+    return `<section class="cs-section">${s.h ? `<h3>${esc(s.h)}</h3>` : ""}${kv}${cards}${table}${ps}${list}${note}</section>`;
+  };
+
   const projectView = i => {
     const p = PROJECTS[i];
     if (p.pdf) return {
@@ -157,15 +177,17 @@
       .filter(([, v]) => v)
       .map(([k, v]) => `<div><dt>${k}</dt><dd>${esc(v)}</dd></div>`).join("");
     const link = p.link ? `<div><dt>Link</dt><dd><a href="${esc(p.link)}" target="_blank" rel="noopener">Visit ↗</a></dd></div>` : "";
-    const stats = p.stats ? `<div class="stats">${p.stats.map(s => `<div><strong>${esc(s.value)}</strong><span>${esc(s.label)}</span></div>`).join("")}</div>` : "";
+    const role = p.role ? `<div><dt>My role</dt><dd>${esc(p.role)}</dd></div>` : "";
+    const stats = p.stats ? `<div class="stats">${p.stats.map(s => `<div><strong>${esc(s.value)}</strong><span>${esc(s.label)}</span>${s.sub ? `<small>${esc(s.sub)}</small>` : ""}</div>`).join("")}</div>` : "";
     const points = p.points ? `<ul class="points">${p.points.map(x => `<li>${esc(x)}</li>`).join("")}</ul>` : "";
+    const cs = p.caseStudy ? `<p class="cs-actions"><a class="btn btn-primary" href="${esc(p.caseStudy)}" target="_blank" rel="noopener">Full case study (PDF) ↗</a></p>` : "";
     return {
       title: p.title,
       html: `
         <h2>${esc(p.title)}</h2>
         <p class="desc">${esc(p.description)}</p>
-        <dl class="meta">${meta}${link}</dl>
-        ${stats}${points}
+        <dl class="meta">${meta}${role}${link}</dl>
+        ${stats}${points}${(p.sections || []).map(renderSection).join("")}${cs}
         ${(p.images || []).map(img => `<div class="shot" style="background:${esc(bg(img))}" role="img" aria-label="${esc(p.title)} image"></div>`).join("")}`,
     };
   };

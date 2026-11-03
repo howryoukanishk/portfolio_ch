@@ -193,6 +193,37 @@ body.has-photo { background: #0b0b0b; }
 .stats div { padding: 18px; border-radius: 14px; background: #f5f5f5; }
 .stats strong { display: block; font-size: 28px; letter-spacing: -0.03em; }
 .stats span { color: var(--muted); font-size: 13px; }
+.stats small { display: block; margin-top: 6px; color: var(--muted); font-size: 12px; line-height: 1.4; }
+
+/* Case study sections */
+.cs-section { margin-top: 34px; padding-top: 26px; border-top: 1px solid #eee; display: grid; gap: 14px; }
+.cs-section h3 { font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; }
+.cs-p { color: #333; line-height: 1.65; font-size: 15px; max-width: 72ch; }
+.cs-section .points { margin: 0; }
+.cs-kv { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.cs-kv div { padding: 12px 14px; border-radius: 12px; background: #f6f6f6; }
+.cs-kv dt { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+.cs-kv dd { margin-top: 4px; font-size: 15px; font-weight: 600; font-variant-numeric: tabular-nums; }
+.cs-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; }
+.cs-card { padding: 16px; border-radius: 14px; border: 1px solid #e8e8e8; display: grid; gap: 10px; align-content: start; }
+.cs-card-top { display: flex; justify-content: space-between; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.cs-card-top span { font-size: 12px; color: #c2410c; font-weight: 600; }
+.cs-card p { font-size: 13px; color: var(--muted); }
+.cs-ads { display: flex; flex-wrap: wrap; gap: 6px; }
+.cs-ads span { font-size: 12px; padding: 4px 10px; border-radius: 999px; background: #f1f1f1; }
+.cs-table { overflow-x: auto; border: 1px solid #eee; border-radius: 12px; }
+.cs-table table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 520px; }
+.cs-table th { text-align: left; font-size: 11px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); background: #fafafa; }
+.cs-table th, .cs-table td { padding: 11px 14px; border-bottom: 1px solid #f0f0f0; vertical-align: top; font-variant-numeric: tabular-nums; }
+.cs-table tr:last-child td { border-bottom: 0; }
+.cs-table td:first-child { font-weight: 600; white-space: nowrap; }
+.cs-note { font-size: 13px; line-height: 1.6; color: #555; padding: 12px 14px; border-radius: 12px; background: #fff7ed; }
+.cs-quote {
+  margin-top: 34px; padding: 22px 24px; border-radius: 16px; background: #111; color: #f2f2f2;
+  font-size: 18px; line-height: 1.55; letter-spacing: -0.01em;
+}
+.cs-actions { margin-top: 26px; }
+
 .points { padding-left: 20px; color: #333; line-height: 1.65; font-size: 15px; }
 .points li { margin: 8px 0; }
 
